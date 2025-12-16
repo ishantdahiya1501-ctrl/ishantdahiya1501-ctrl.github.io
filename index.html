@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="default">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me to Millets | Premium Ethical Chocolates with Millets & Natural Sweeteners</title>
+    <meta name="description" content="Indulge in premium, ethical chocolate crafted with 100% unprocessed sugar alternatives like honey and dates, superfood millets, and zero preservatives. Shop artisan chocolates that are healthy and delicious.">
+    <meta name="keywords" content="healthy chocolate, millet chocolate, sugar-free chocolate, ethical chocolate, artisan chocolate, natural sweeteners, honey chocolate, date sweetened chocolate, premium chocolates India">
+    <meta name="author" content="Me to Millets">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourdomain.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta property="og:title" content="Me to Millets | Premium Ethical Chocolates with Millets">
+    <meta property="og:description" content="Discover premium, ethical chocolates made with superfood millets and natural sweeteners. Zero preservatives, 100% delicious.">
+    <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg">
+    <meta property="og:site_name" content="Me to Millets">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://yourdomain.com/">
+    <meta name="twitter:title" content="Me to Millets | Premium Ethical Chocolates">
+    <meta name="twitter:description" content="Premium chocolates with millets & natural sweeteners. Healthy indulgence redefined.">
+    <meta name="twitter:image" content="https://yourdomain.com/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/icons/logo2.jpg">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/background.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FoodEstablishment",
+      "name": "Me to Millets",
+      "description": "Premium ethical chocolates crafted with superfood millets and natural sweeteners",
+      "url": "https://yourdomain.com",
+      "logo": "https://yourdomain.com/images/icons/logo.svg",
+      "image": "https://yourdomain.com/images/og-image.jpg",
+      "priceRange": "$$",
+      "servesCuisine": "Chocolate",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.facebook.com/yourbrand",
+        "https://www.instagram.com/yourbrand",
+        "https://twitter.com/yourbrand"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Me to Millets",
+      "url": "https://yourdomain.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://yourdomain.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- =================================================================
+    AI Chatbot
+    ================================================================== -->
+    <div class="chatbot-icon" id="chatbotTrigger">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <h3><i class="fas fa-robot"></i> Chocolate Assistant</h3>
+            <button class="close-chatbot" id="closeChatbot">&times;</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chatbot-message bot">
+                <p>Hello! I'm your chocolate assistant. How can I help you find your perfect chocolate today?</p>
+            </div>
+        </div>
+        <div class="chatbot-suggestions">
+            <div class="suggestions-title">Quick questions:</div>
+            <div class="suggestion-buttons">
+                <button class="suggestion-btn" data-question="What are your bestsellers?">Bestsellers</button>
+                <button class="suggestion-btn" data-question="Tell me about gift options">Gift ideas</button>
+                <button class="suggestion-btn" data-question="How is your chocolate healthy?">Health benefits</button>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="Ask about flavors, gifts, or recommendations...">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- =================================================================
+    Global Alert Banner
+    ================================================================== -->
+    <div id="header-container"></div>
+   <div class="temperature-alert" id="temperatureAlert">
+        <p><i class="fas fa-temperature-high"></i> <strong>High temperature alert:</strong> We recommend choosing expedited shipping to ensure your chocolate arrives in perfect condition.</p>
+        <button class="close-alert" id="closeTempAlert" aria-label="Close alert">&times;</button>
+    </div>
+
+    <!-- =================================================================
+    Header
+    ================================================================== -->
+    <script>
+        // Wait for utils to be loaded before fetching header
+        function loadHeader() {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                    // This script needs to run AFTER the header is loaded
+                    if (window.utils) {
+                        const user = window.utils.loadFromLocalStorage('userProfile');
+                        const accountLink = document.getElementById('accountLink');
+                        const mobileAccountLink = document.getElementById('mobileAccountLink');
+
+                        if (user) {
+                            if (accountLink) accountLink.href = 'pages/account.html';
+                            if (mobileAccountLink) mobileAccountLink.href = 'pages/account.html';
+                        } else {
+                            if (mobileAccountLink) mobileAccountLink.href = 'pages/login-register.html';
+                        }
+                    }
+                    
+                    // Trigger header loaded event so main.js can attach cart listeners
+                    window.dispatchEvent(new Event('headerLoaded'));
+                })
+                .catch(error => console.error('Error loading header:', error));
+        }
+        
+        // Load header immediately (scripts will be loaded by then)
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadHeader);
+        } else {
+            loadHeader();
+        }
+    </script>
+
+    <!-- =================================================================
+    Mobile-Only Home (Phone ≤ 768px)
+    Minimal single-column entry point.
+    ================================================================== -->
+    <main class="mobile-only m-home" id="mobileHome" aria-label="Mobile home">
+        <div class="m-home-inner">
+            <section class="m-home-card" aria-label="Quick start">
+                <p class="m-home-kicker">Premium • Ethical • Millet-powered</p>
+                <h2 class="m-home-title">Healthy indulgence, made simple.</h2>
+                <p class="m-home-subtitle">Shop bestsellers or open your cart in one tap.</p>
+                <div class="m-home-actions" role="group" aria-label="Primary actions">
+                    <a class="btn btn-primary m-home-btn" href="pages/products.html">Shop Chocolates</a>
+                    <button class="btn btn-secondary m-home-btn" id="mobileHomeCartBtn" type="button">Open Cart</button>
+                </div>
+            </section>
+
+            <section class="m-home-grid" aria-label="Shortcuts">
+                <a class="m-home-tile" href="pages/products.html" aria-label="Shop">
+                    <i class="fas fa-store" aria-hidden="true"></i>
+                    <span>Shop</span>
+                </a>
+                <a class="m-home-tile" href="pages/products.html?category=bestseller" aria-label="Bestsellers">
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <span>Bestsellers</span>
+                </a>
+                <a class="m-home-tile" href="pages/gift-wizard.html" aria-label="Gift Wizard">
+                    <i class="fas fa-gift" aria-hidden="true"></i>
+                    <span>Gifts</span>
+                </a>
+                <a class="m-home-tile" href="pages/custom-builder.html" aria-label="Custom Builder">
+                    <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>
+                    <span>Build</span>
+                </a>
+                <a class="m-home-tile" href="pages/special-requests.html" aria-label="Special Requests">
+                    <i class="fas fa-pen-to-square" aria-hidden="true"></i>
+                    <span>Request</span>
+                </a>
+                <a class="m-home-tile" href="pages/reviews.html" aria-label="Reviews">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                    <span>Reviews</span>
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <!-- =================================================================
+    Hero Carousel Section
+    ================================================================== -->
+<section class="hero-section">
+    <div class="hero-ambient" aria-hidden="true">
+        <span class="hero-glow hero-glow-1"></span>
+        <span class="hero-glow hero-glow-2"></span>
+        <span class="hero-glow hero-glow-3"></span>
+    </div>
+
+    <div class="hero-floating-highlights">
+        <div class="highlight-card">
+            <span class="highlight-pill">Low GI indulgence</span>
+            <strong>Zero refined sugar</strong>
+            <p>Sweetened with honey and dates for smooth, sustained energy.</p>
+        </div>
+        <div class="highlight-card">
+            <span class="highlight-pill">Millet-first craft</span>
+            <strong>Ancient grains, modern taste</strong>
+            <p>Superfood millets meet single-origin cocoa in every small batch.</p>
+        </div>
+        <div class="highlight-card">
+            <span class="highlight-pill">Carefully delivered</span>
+            <strong>Chill-safe shipping</strong>
+            <p>Insulated, temperature-aware delivery keeps every bar pristine.</p>
+        </div>
+    </div>
+
+    <div class="hero-carousel">
+        <!-- Slide 1 -->
+        <div class="carousel-slide active" data-slide="1">
+            <div class="carousel-content">
+                <span class="carousel-badge">Bespoke Creations</span>
+                <h2>Your Vision, Our Chocolate</h2>
+                <h3>Custom Requests Welcome</h3>
+                <p>
+                    From bespoke flavors for weddings to branded corporate gifts, we bring your unique chocolate ideas to life. Tell us your dream, and we'll handle the delicious details.
+                </p>
+                <div class="carousel-buttons">
+                    <a href="pages/special-requests.html" class="btn btn-gold">Make a Request</a>
+                    <a href="pages/products.html" class="btn btn-secondary">Explore Flavors</a>
+                </div>
+            </div>
+            <div class="carousel-slide-image">
+                <img src="images/banners/slide1.jpg" alt="Artisanal chocolate creation process.">
+            </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-slide" data-slide="2">
+            <div class="carousel-content">
+                <span class="carousel-badge">Pioneering Nutrition</span>
+                <h2>India's First Millet-Based Chocolate</h2>
+                <h3>A Revolution in Healthy Indulgence</h3>
+                <p>
+                    We are proud to be the trailblazers in combining the ancient goodness of Indian millets with the luxurious taste of premium dark chocolate. A treat that's both delicious and nourishing.
+                </p>
+                <div class="carousel-buttons">
+                    <a href="pages/about.html" class="btn btn-primary">Discover Our Story</a>
+                    <a href="pages/products.html" class="btn btn-secondary">Shop The Range</a>
+                </div>
+            </div>
+            <div class="carousel-slide-image">
+                <img src="images/banners/slide3.jpg" alt="A bar of millet chocolate next to a bowl of millet grains.">
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-slide" data-slide="3">
+            <div class="carousel-content">
+                <span class="carousel-badge">Our Philosophy</span>
+                <h2>Ancient Grains, Modern Indulgence</h2>
+                <h3>The Future of Chocolate is Wholesome</h3>
+                <p>
+                    We bridge the gap between health and luxury, creating chocolates that honor ancient nutritional wisdom while satisfying modern cravings. It's indulgence you can feel good about.
+                </p>
+                <div class="carousel-buttons">
+                    <a href="pages/products.html" class="btn btn-gold">Explore Flavors</a>
+                    <a href="pages/millets.html" class="btn btn-secondary">Why Millets?</a>
+                </div>
+            </div>
+            <div class="carousel-slide-image">
+                <img src="images/banners/slide4.jpeg" alt="A farmer holding fresh cocoa pods.">
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-slide" data-slide="4">
+            <div class="carousel-content">
+                <span class="carousel-badge">Exquisite Handcraft</span>
+                <h2>Discover the Art of Fine Chocolate</h2>
+                <h3>A Symphony of Flavors Awaits</h3>
+                <p>
+                    Indulge in our curated collection of handcrafted chocolates, made from the finest single-origin cocoa beans. Experience pure bliss with every bite.
+                </p>
+                <div class="carousel-buttons">
+                    <a href="#products" class="btn btn-primary">Shop Now</a>
+                    <a href="#quiz" class="btn btn-secondary">Find Your Flavor</a>
+                </div>
+            </div>
+            <div class="carousel-slide-image">
+                <img src="images/banners/slide5.webp" alt="Artisanal chocolates being carefully crafted.">
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-dots">
+            <span class="carousel-dot active" data-slide-to="1"></span>
+            <span class="carousel-dot" data-slide-to="2"></span>
+            <span class="carousel-dot" data-slide-to="3"></span>
+            <span class="carousel-dot" data-slide-to="4"></span>
+        </div>
+        <button class="carousel-btn" id="nextBtn" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</section>
+
+    <!-- =================================================================
+    Trust Badges Section
+    ================================================================== -->
+    <section class="trust-badges-section">
+        <div class="container">
+            <h2 class="section-title">Indulgence You Can Feel Good About</h2>
+            <p class="section-subtitle">Crafted for taste, wellness, and a better world.</p>
+            <div class="trust-badges-grid">
+                <div class="trust-badge">
+                    <i class="fas fa-seedling badge-icon"></i>
+                    <h3>100% Ethical Sourced</h3>
+                    <p>Direct partnerships with cocoa farmers ensure fair wages and sustainable practices.</p>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-candy-cane badge-icon"></i>
+                    <h3>No Processed Sugar</h3>
+                    <p>Sweetened naturally with honey, dates, and other wholesome ingredients.</p>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-check-circle badge-icon"></i>
+                    <h3>Certified Organic</h3>
+                    <p>Lab-tested and certified by international standards for purity and quality.</p>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-award badge-icon"></i>
+                    <h3>Award Winning</h3>
+                    <p>Recognized globally for exceptional taste, quality, and innovation.</p>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-star badge-icon"></i>
+                    <h3>4.8/5 Star Rated</h3>
+                    <p>Join over 2,000 happy customers who love our chocolate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+    Millets Feature Section
+    ================================================================== -->
+    <section class="trust-badges-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">The Power of Millets</h2>
+            <p class="section-subtitle">We believe indulgence can be nourishing. That's why we enrich our chocolates with the goodness of millets.</p>
+            <div class="trust-badges-grid">
+                <div class="trust-badge">
+                    <i class="fas fa-leaf badge-icon"></i>
+                    <h3>Nutrient-Rich</h3>
+                    <p>Millets are packed with fiber, protein, and essential minerals, making our chocolate a healthier treat.</p>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-grin-tongue badge-icon"></i>
+                    <h3>Delicious Texture</h3>
+                    <p>They add a delightful nutty flavor and a satisfyingly crunchy texture to every bite.</p>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-bolt badge-icon"></i>
+                    <h3>Superfood Boost</h3>
+                    <p>As ancient super-grains, millets boost nutritional value without compromising luxurious taste.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="pages/millets.html" class="btn btn-secondary">Learn More About Our Ingredients</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+    Flavor Preference Quiz
+    ================================================================== -->
+    <section class="quiz-section" id="quiz">
+    <div class="container">
+        <h2 class="section-title">Find Your Perfect Chocolate</h2>
+        <p class="section-subtitle">Take our quick quiz for personalized recommendations</p>
+        
+        <div class="quiz-container" id="quizContainer">
+            <div class="quiz-progress" id="quizProgress" aria-live="polite">
+                <div class="quiz-progress-text" id="quizProgressText">Step 1 of 3</div>
+                <div class="quiz-progress-bar" aria-hidden="true">
+                    <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                </div>
+            </div>
+            <!-- Step 1 -->
+            <div class="quiz-step active" id="step1">
+                <h3>What's your preferred sweetness level?</h3>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="sweetness" value="less-sweet">
+                        <div class="option-content">
+                            <div class="option-icon">🍫</div>
+                            <p>🍫 Dark & Rich</p>
+                        </div>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="sweetness" value="moderate">
+                        <div class="option-content">
+                            <div class="option-icon">🍯</div>
+                            <p>Moderately Sweet</p>
+                        </div>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="sweetness" value="sweet">
+                        <div class="option-content">
+                            <div class="option-icon">🌰</div>
+                            <p>Sweet</p>
+                        </div>
+                    </label>
+                </div>
+                <button class="btn btn-primary quiz-next" data-next="2">Next</button>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="quiz-step" id="step2">
+                <h3>Which texture do you enjoy?</h3>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="texture" value="smooth">
+                        <div class="option-content">
+                            <div class="option-icon">✨</div>
+                            <p>Smooth & Creamy</p>
+                        </div>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="texture" value="crunchy">
+                        <div class="option-content">
+                            <div class="option-icon">🥜</div>
+                            <p>Crunchy with Nuts</p>
+                        </div>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="texture" value="chewy">
+                        <div class="option-content">
+                            <div class="option-icon">🍇</div>
+                            <p>Chewy with Fruits</p>
+                        </div>
+                    </label>
+                </div>
+                <div class="quiz-navigation">
+                    <button class="btn btn-secondary quiz-prev" data-prev="1">Back</button>
+                    <button class="btn btn-primary quiz-next" data-next="3">Next</button>
+                </div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="quiz-step" id="step3">
+                <h3>What's the occasion?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="self" role="button" tabindex="0">
+                            <div class="option-icon">😊</div>
+                            <p>Treating Myself</p>
+                        </div>
+                        <div class="quiz-option" data-value="gift" role="button" tabindex="0">
+                            <div class="option-icon">🎁</div>
+                            <p>Gift for Someone</p>
+                        </div>
+                        <div class="quiz-option" data-value="special" role="button" tabindex="0">
+                            <div class="option-icon">✨</div>
+                            <p>Special Celebration</p>
+                        </div>
+                    </div>
+                    <div class="quiz-navigation">
+                        <button class="btn btn-secondary quiz-prev" data-prev="2">Back</button>
+                        <button class="btn btn-primary" id="getResults">Get Recommendations</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-results" id="quizResults">
+                    <h3>Perfect Matches for You!</h3>
+                    <div class="recommendations-grid" id="recommendationsGrid">
+                        <!-- Recommendations will be inserted here -->
+                    </div>
+                    <button class="btn btn-secondary" id="retakeQuiz">Retake Quiz</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product categories removed per request -->
+
+    <!-- =================================================================
+    Featured Products Section
+    ================================================================== -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Best Sellers</h2>
+                <a href="pages/products.html?category=bestseller" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="products-grid" id="featuredProducts">
+                <!-- Products will be loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+    Treat Yourself Generator
+    ================================================================== -->
+    <section class="surprise-section">
+        <div class="container">
+            <h2 class="section-title">Treat Yourself</h2>
+            <p class="section-subtitle">Can't decide? Let us surprise you with a random chocolate delight!</p>
+            
+            <div class="surprise-container">
+                <div class="surprise-draw" id="surpriseWheel" aria-live="polite">
+                    <!-- These items are used as the source list; JS will render draw cards based on productData -->
+                    <div class="draw-source">Dark 85%</div>
+                    <div class="draw-source">Honey Crunch</div>
+                    <div class="draw-source">Date Delight</div>
+                    <div class="draw-source">Millet Magic</div>
+                    <div class="draw-source">Sea Salt</div>
+                    <div class="draw-source">Orange Zest</div>
+                </div>
+                <button class="btn btn-gold" id="spinWheel" aria-controls="surpriseWheel" aria-expanded="false">
+                    <i class="fas fa-gift"></i> Draw My Treat
+                </button>
+                <div class="surprise-result" id="surpriseResult" hidden>
+                    <div class="result-content">
+                        <h3>✨ Your Surprise Chocolate:</h3>
+                        <div class="result-chocolate" id="resultChocolate">
+                            <!-- Result will appear here -->
+                        </div>
+                        <button class="btn btn-primary" id="addSurpriseToCart" disabled aria-disabled="true">🎯 Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+    Flavor Wheel Section
+    ================================================================== -->
+    <section class="flavor-wheel-section">
+        <div class="container">
+            <h2 class="section-title">Discover Your Flavor Profile</h2>
+            <p class="section-subtitle">🗺️ Explore our taste map to find chocolates matching your preferences</p>
+            
+            <div class="flavor-wheel-container">
+                <div class="flavor-chart" id="flavorChart">
+                    <div class="chart-axis chart-x-axis"></div>
+                    <div class="chart-axis chart-y-axis"></div>
+                    
+                    <div class="chart-labels label-left">Bitter</div>
+                    <div class="chart-labels label-right">Sweet</div>
+                    <div class="chart-labels label-top">Fruity</div>
+                    <div class="chart-labels label-bottom">Earthy</div>
+                    
+                    <div class="flavor-point cocoa-bomb" data-flavor="cocoa-bomb" title="Cocoa Bomb"></div>
+                    <div class="flavor-point dark-berry" data-flavor="dark-berry" title="Dark & Berry"></div>
+                    <div class="flavor-point nutty-smooth" data-flavor="nutty-smooth" title="Nutty Smooth"></div>
+                    <div class="flavor-point creamy-sweet" data-flavor="creamy-sweet" title="Creamy Sweet"></div>
+                    <div class="flavor-point fruity-tangy" data-flavor="fruity-tangy" title="Fruity Tangy"></div>
+                    <div class="flavor-point herbal-spice" data-flavor="herbal-spice" title="Herbal Spice"></div>
+                </div>
+                
+                <div class="flavor-description" id="flavorDescription">
+                    <h3>Select a flavor profile to explore</h3>
+                    <p>Click on any flavor point to discover our recommendations tailored to your taste preferences.</p>
+                    <div class="recommended-products-list">
+                        <h4>Featured in This Profile:</h4>
+                        <ul id="recommendedProducts">
+                            <li>Dark 85% with Himalayan Salt</li>
+                            <li>Cocoa Nibs Delight</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+    Subscription Plans Section
+    ================================================================== -->
+    <section class="subscription-section">
+        <div class="container">
+            <h2 class="section-title">📦 Millet Subscriptions</h2>
+            <p class="section-subtitle">Enjoy our finest creations delivered monthly at special prices</p>
+            
+            <div class="plans-grid">
+                <div class="plan-card content-block">
+                    <div class="plan-name">Monthly Starter</div>
+                    <div class="plan-price">₹999 <span class="plan-price-note">/month</span></div>
+                    <div class="plan-price-note">per month</div>
+                    <ul class="plan-features">
+                        <li>2-3 curated chocolates</li>
+                        <li>Save 15% vs retail</li>
+                        <li>Free shipping</li>
+                        <li>Tasting notes guide</li>
+                    </ul>
+                    <a href="pages/subscriptions.html" class="btn btn-secondary plan-cta">Choose Plan</a>
+                </div>
+                
+                <div class="plan-card featured content-block">
+                    <div class="plan-badge">Most Popular</div>
+                    <div class="plan-name">Monthly Connoisseur</div>
+                    <div class="plan-price">₹1,799 <span class="plan-price-note">/month</span></div>
+                    <ul class="plan-features">
+                        <li>5-6 premium selections</li>
+                        <li>Save 20% vs retail</li>
+                        <li>Free express shipping</li>
+                        <li>Exclusive limited editions</li>
+                        <li>Member discount codes</li>
+                    </ul>
+                    <a href="pages/subscriptions.html" class="btn btn-primary plan-cta">Choose Plan</a>
+                </div>
+                
+                <div class="plan-card content-block">
+                    <div class="plan-name">Monthly Luxe</div>
+                    <div class="plan-price">₹2,999 <span class="plan-price-note">/month</span></div>
+                    <ul class="plan-features">
+                        <li>10 artisan pieces</li>
+                        <li>Save 25% vs retail</li>
+                        <li>Priority shipping</li>
+                        <li>VIP event access</li>
+                        <li>Personal chocolate concierge</li>
+                    </ul>
+                    <a href="pages/subscriptions.html" class="btn btn-secondary plan-cta">Choose Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loyalty Program Section (Temporarily Disabled) -->
+    <!--
+    <section class="loyalty-section">
+        ...
+    </section>
+    -->
+
+    <!-- =================================================================
+    Bundle Deals Section
+    ================================================================== -->
+    <section class="bundle-section">
+        <div class="container">
+            <h2 class="section-title">🎁 Curated Millet Bundles</h2>
+            <p class="section-subtitle">Save up to 30% with our expertly curated collections</p>
+            <style>
+                .bundles-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                    gap: var(--spacing-lg);
+                    margin-top: var(--spacing-md);
+                }
+                .bundle-card {
+                    background: var(--white);
+                    border-radius: 12px;
+                    padding: var(--spacing-md);
+                    box-shadow: 0 6px 24px rgba(14,21,31,0.06);
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--spacing-sm);
+                    transition: transform .18s ease, box-shadow .18s ease;
+                    border: 1px solid rgba(0,0,0,0.03);
+                }
+                .bundle-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(14,21,31,0.08); }
+                .bundle-header { display:flex; align-items:center; justify-content:space-between; gap: .5rem; }
+                .bundle-name { font-weight:700; font-size:1.05rem; color:var(--dark-chocolate); }
+                .bundle-items-count { font-size:0.85rem; color:var(--medium-gray); }
+                .bundle-items ul { margin:0; padding-left:1.1rem; color:var(--dark-gray); }
+                .bundle-items li { margin-bottom: .35rem; font-size:0.95rem; }
+                .bundle-pricing { margin-top:auto; }
+                .bundle-price-row { display:flex; justify-content:space-between; font-size:0.9rem; color:var(--medium-gray); }
+                .bundle-price-row span:first-child { color: var(--dark-chocolate); font-weight:600; }
+                .bundle-original { text-decoration:line-through; color:var(--medium-gray); }
+                .bundle-discount { color:var(--success); font-weight:700; }
+                .bundle-final-price { display:flex; align-items:center; justify-content:space-between; margin-top: .5rem; }
+                .bundle-final-price span:first-child { font-size:1.25rem; font-weight:800; color:var(--dark-chocolate); }
+                .bundle-cta { background:var(--gold); border:none; color:white; padding:.6rem .9rem; border-radius:8px; cursor:pointer; font-weight:700; transition: transform .18s ease, box-shadow .18s ease; }
+                .bundle-cta:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+
+                /* subtle pulse animation to draw attention */
+                @keyframes bundlePulse {
+                    0% { box-shadow: 0 6px 18px rgba(212,132,122,0.06); transform: translateY(0); }
+                    50% { box-shadow: 0 18px 36px rgba(212,132,122,0.12); transform: translateY(-2px); }
+                    100% { box-shadow: 0 6px 18px rgba(212,132,122,0.06); transform: translateY(0); }
+                }
+                .bundle-cta.animated {
+                    animation: bundlePulse 3s ease-in-out infinite;
+                }
+                .bundle-badge { background:var(--primary-pink); color:white; padding:4px 8px; border-radius:999px; font-size:0.8rem; font-weight:700; }
+            </style>
+
+            <div class="bundles-grid">
+                <div class="bundle-card">
+                    <div class="bundle-header">
+                        <div>
+                            <div class="bundle-name">Dark Lover's Trio</div>
+                            <div class="bundle-items-count">3 premium bars</div>
+                        </div>
+                        <div class="bundle-badge">Popular</div>
+                    </div>
+                    <div class="bundle-items">
+                        <ul>
+                            <li>Classic 85% (Madagascar)</li>
+                            <li>Himalayan Pink Salt — 72%</li>
+                            <li>Citrus Noir — 75% with candied orange</li>
+                        </ul>
+                    </div>
+                    <div class="bundle-pricing">
+                        <div class="bundle-price-row">
+                            <span>Regular Price:</span>
+                            <span class="bundle-original">₹1,299</span>
+                        </div>
+                        <div class="bundle-price-row">
+                            <span>Bundle Savings:</span>
+                            <span class="bundle-discount">Save ₹280 (22%)</span>
+                        </div>
+                        <div class="bundle-final-price">
+                            <span>₹1,019</span>
+                            <button class="bundle-cta" onclick="window.location.href='pages/products.html?category=bestseller'">🎯 Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bundle-card">
+                    <div class="bundle-header">
+                        <div>
+                            <div class="bundle-name">Gifter's Paradise</div>
+                            <div class="bundle-items-count">6 premium pieces</div>
+                        </div>
+                        <div class="bundle-badge">Gift Ready</div>
+                    </div>
+                    <div class="bundle-items">
+                        <ul>
+                            <li>Best Sellers Assortment</li>
+                            <li>Salted Caramel — 70% gooey center</li>
+                            <li>Pistashio — 70% with roasted pistachios</li>
+                            <li>Premium Gift Box + Card</li>
+                            <li>Tasting Guide</li>
+                            <li>Express Shipping</li>
+                        </ul>
+                    </div>
+                    <div class="bundle-pricing">
+                        <div class="bundle-price-row">
+                            <span>Regular Price:</span>
+                            <span class="bundle-original">₹2,499</span>
+                        </div>
+                        <div class="bundle-price-row">
+                            <span>Bundle Savings:</span>
+                            <span class="bundle-discount">Save ₹750 (30%)</span>
+                        </div>
+                        <div class="bundle-final-price">
+                            <span>₹1,749</span>
+                            <button class="bundle-cta" onclick="window.location.href='pages/gift-wizard.html'">Gift Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bundle-card">
+                    <div class="bundle-header">
+                        <div>
+                            <div class="bundle-name">Millet Sampler Box</div>
+                            <div class="bundle-items-count">4 bars + sampler</div>
+                        </div>
+                        <div class="bundle-badge">New</div>
+                    </div>
+                    <div class="bundle-items">
+                        <ul>
+                            <li>Island Noir — Toasted Coconut</li>
+                            <li>Findik — Roasted Hazelnuts</li>
+                            <li>Berry Fusion — 65% with freeze-dried berries</li>
+                            <li>Classic 85% Mini</li>
+                        </ul>
+                    </div>
+                    <div class="bundle-pricing">
+                        <div class="bundle-price-row">
+                            <span>Regular Price:</span>
+                            <span class="bundle-original">₹1,499</span>
+                        </div>
+                        <div class="bundle-price-row">
+                            <span>Bundle Savings:</span>
+                            <span class="bundle-discount">Save ₹300 (20%)</span>
+                        </div>
+                        <div class="bundle-final-price">
+                            <span>₹1,199</span>
+                            <button class="bundle-cta" onclick="window.location.href='pages/products.html'">Shop Box</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+    Behind The Scenes Section
+    ================================================================== -->
+    <section class="behind-scenes-section">
+        <div class="container">
+            <h2 class="section-title">Behind The Scenes</h2>
+            <p class="section-subtitle">👨‍🍳 See how we transform ethical cocoa into liquid gold</p>
+            
+            <div class="behind-scenes-grid">
+                <div class="story-card">
+                    <img src="https://images.unsplash.com/photo-1599599810694-b5ac4dd64b3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Farmer holding cocoa pods" class="story-image" loading="lazy">
+                    <div class="story-content">
+                        <h3>🌾 Direct Farmer Partnerships</h3>
+                        <p>We work directly with 47 cocoa farmers in Ghana and Ecuador, ensuring fair wages and sustainable farming practices.</p>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Roasting cocoa beans" class="story-image" loading="lazy">
+                    <div class="story-content">
+                        <h3>🔥 Small Batch Roasting</h3>
+                        <p>Every batch of cocoa beans is carefully roasted in small quantities to bring out unique flavor profiles and maintain quality.</p>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <img src="https://images.unsplash.com/photo-1527521481379-d64d100d1f9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chocolatier crafting a chocolate bar" class="story-image" loading="lazy">
+                    <div class="story-content">
+                        <h3>🎨 Artisan Crafting</h3>
+                        <p>Our master chocolatiers hand-craft each bar using 100% natural ingredients - no emulsifiers, no preservatives.</p>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <img src="https://images.unsplash.com/photo-1554456206-87d47aaf1ed8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Finished chocolate bars being inspected" class="story-image" loading="lazy">
+                    <div class="story-content">
+                        <h3>✅ Quality Assurance</h3>
+                        <p>Every chocolate passes through 12 quality checkpoints and independent lab testing before it reaches you.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="pages/about.html" class="btn btn-secondary">Discover Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+    Community Section
+    ================================================================== -->
+    <section class="community-section">
+        <div class="container">
+            <h2 class="section-title">👥 Join The Millet Community</h2>
+            <p class="section-subtitle">Share your love of chocolate and earn rewards</p>
+            
+            <div class="community-features">
+                <div class="community-feature">
+                    <div class="feature-icon">📸</div>
+                    <h3>Share Your Moments</h3>
+                    <p>Tag us on Instagram with #MeToMillets and get featured on our page</p>
+                </div>
+                <div class="community-feature">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Write Reviews</h3>
+                    <p>Share your honest review and earn 50 loyalty points instantly</p>
+                </div>
+                <div class="community-feature">
+                    <div class="feature-icon">🎁</div>
+                    <h3>Referral Rewards</h3>
+                    <p>Share with friends and both get ₹200 credit on your next purchase</p>
+                </div>
+                <div class="community-feature">
+                    <div class="feature-icon">💬</div>
+                    <h3>Community Forum</h3>
+                    <p>Connect with other chocolate lovers and share tasting notes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+    Post-Purchase Section
+    ================================================================== -->
+    <section class="post-purchase-section">
+        <div class="container">
+            <h2 class="section-title">Beyond Purchase</h2>
+            <p class="section-subtitle">💝 Your millet experience doesn't end at checkout</p>
+            
+            <div class="purchase-benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎥</div>
+                    <h3>Unboxing Videos</h3>
+                    <p>Share your unboxing and we'll feature it - earn bonus points</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📍</div>
+                    <h3>Shipment Tracking</h3>
+                    <p>Real-time tracking with temperature monitoring for perfect arrival</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🍂</div>
+                    <h3>Care Instructions</h3>
+                    <p>Detailed guide to store and savor your chocolate perfectly</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔄</div>
+                    <h3>Reorder with One Click</h3>
+                    <p>Save your favorites and reorder instantly on your next visit</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💌</div>
+                    <h3>Personal Recommendations</h3>
+                    <p>Get curated suggestions based on your purchase history</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🆘</div>
+                    <h3>Customer Support</h3>
+                    <p>24/7 live chat support to answer all your chocolate questions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+    Blog Highlights Section
+    ================================================================== -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">From Our Blog</h2>
+                <a href="pages/blog.html" class="view-all">Read All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1511381939415-e44015466834?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pouring melted chocolate" loading="lazy">
+                        <span class="blog-category">Process</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>The Art of Bean-to-Bar Chocolate Making</h3>
+                        <p>Discover our ethical sourcing process and how we transform raw cocoa beans into luxurious chocolate.</p>
+                        <a href="pages/blog.html#post1" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1575377427642-087cf684f29d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Millet grains in a bowl" loading="lazy">
+                        <span class="blog-category">Health</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Why Millets in Chocolate Are a Superfood Combo</h3>
+                        <p>Learn about the health benefits of combining antioxidant-rich dark chocolate with nutritious millets.</p>
+                        <a href="pages/blog.html#post2" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1548907042-3e8c5b07a98c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chocolate bar next to a glass of wine" loading="lazy">
+                        <span class="blog-category">Guide</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Perfect Pairings: Chocolate with Wine, Coffee & More</h3>
+                        <p>Our expert guide to pairing different chocolate varieties with beverages and foods.</p>
+                        <a href="pages/blog.html#post3" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+    Newsletter Section
+    ================================================================== -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>📬 Join Our Millet Journey</h2>
+                <p>Subscribe to get updates on new flavors, exclusive offers, and millet wisdom.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+                <p class="newsletter-note">❤️ We respect your privacy. No spam, just millet love.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+    Footer
+    ================================================================== -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="images/icons/logo.png" alt="Me to Millets">
+                        <h3>Me to Millets</h3>
+                    </div>
+                    <p class="footer-description">Premium, ethical chocolates with 100% processed-free sugar, sweetened naturally with honey & dates.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/products.html?category=dark">Flavoured Dark Chocolates</a></li>
+                        <li><a href="pages/products.html?category=gifts">Gift Hampers</a></li>
+                        <li><a href="pages/products.html?category=valentine">Valentine's Special</a></li>
+                        <li><a href="pages/products.html?category=birthday">Birthday Special</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/about.html">Our Story</a></li>
+                        <li><a href="pages/about.html#ethics">Ethical Sourcing</a></li>
+                        <li><a href="pages/about.html#sustainability">Sustainability</a></li>
+                        <li><a href="pages/blog.html">Blog</a></li>
+                        <li><a href="pages/contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/faq.html">FAQ</a></li>
+                        <li><a href="pages/shipping.html">Shipping & Returns</a></li>
+                        <li><a href="pages/allergens.html">Allergen Information</a></li>
+                        <li><a href="pages/terms.html">Terms & Conditions</a></li>
+                        <li><a href="pages/privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-phone"></i> 8750441860</li>
+                        <li><i class="fas fa-envelope"></i> metomillets@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Me to Millets. All rights reserved. | Made with <i class="fas fa-heart"></i> and 🍫</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =================================================================
+    Sidebar Backdrop
+    ================================================================== -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- =================================================================
+    Cart Sidebar
+    ================================================================== -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Your Chocolate Cart</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded via JavaScript -->
+            <div class="empty-cart" id="emptyCart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <a href="pages/products.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-price" id="cartTotal">$0.00</span>
+            </div>
+            <a href="pages/checkout.html" class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</a>
+            <a href="pages/cart.html" class="btn btn-secondary btn-block">View Full Cart</a>
+        </div>
+    </div>
+
+    <!-- =================================================================
+    Wishlist Sidebar
+    ================================================================== -->
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="wishlist-header">
+            <h3><i class="fas fa-heart"></i> Your Wishlist</h3>
+            <button class="close-wishlist" id="closeWishlist">&times;</button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <!-- Wishlist items will be loaded via JavaScript -->
+            <div class="empty-wishlist" id="emptyWishlist">
+                <i class="far fa-heart"></i>
+                <p>Your wishlist is empty</p>
+                <a href="pages/products.html" class="btn btn-primary">Explore Chocolates</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================================
+    Quick View Modal
+    ================================================================== -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content" id="quickViewContent">
+            <!-- Product quick view content will be loaded via JavaScript -->
+        </div>
+    </div>
+
+    <!-- =================================================================
+    JavaScript
+    ================================================================== -->
+    <script src="js/product-data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/reviews.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check login status and update account links to point to account or login page
+            const user = window.utils.loadFromLocalStorage('userProfile');
+            const accountLink = document.getElementById('accountLink');
+            const mobileAccountLink = document.getElementById('mobileAccountLink');
+
+            if (user) {
+                // If user is logged in, point to the account page
+                if (accountLink) accountLink.href = 'pages/account.html';
+                if (mobileAccountLink) mobileAccountLink.href = 'pages/account.html';
+            } else {
+                // If user is not logged in, point to the login page
+                if (mobileAccountLink) mobileAccountLink.href = 'pages/login-register.html';
+            }
+
+            // Make blog cards clickable
+            const blogCards = document.querySelectorAll('.blog-card');
+            blogCards.forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    window.location.href = 'pages/blog.html';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
